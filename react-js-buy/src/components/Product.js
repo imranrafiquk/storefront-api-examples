@@ -68,7 +68,11 @@ class Product extends Component {
           Quantity
           <input min="1" type="number" defaultValue={variantQuantity} onChange={this.handleQuantityChange}></input>
         </label>
-        <button className="Product__buy button" onClick={() => this.props.addVariantToCart(variant.id, variantQuantity)}>Add to Cart</button>
+        <button className="Product__buy button" onClick={() => {
+          console.log(variant.id);
+          console.log(variantQuantity);
+          this.props.addVariantToCart(["Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMjIxNjU5Njc0MjIyNg==","Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMjIxNjU5OTgyMjQxOA=="], 1);
+        }}>Buy this look</button>
       </div>
     );
   }

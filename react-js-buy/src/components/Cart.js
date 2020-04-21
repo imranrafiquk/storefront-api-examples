@@ -9,7 +9,7 @@ class Cart extends Component {
   }
 
   openCheckout() {
-    window.open(this.props.checkout.webUrl);
+    window.open("http://www.google.com");
   }
 
   render() {

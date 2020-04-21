@@ -26,9 +26,10 @@ class App extends Component {
       });
     });
 
-    this.props.client.product.fetchAll().then((res) => {
+    const productId = 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQ1Nzk2Mzc0OTM4NDI=';
+    this.props.client.product.fetch(productId).then((res) => {
       this.setState({
-        products: res,
+        products: [res],
       });
     });
 
@@ -44,7 +45,19 @@ class App extends Component {
       isCartOpen: true,
     });
 
-    const lineItemsToAdd = [{variantId, quantity: parseInt(quantity, 10)}]
+
+    console.log(variantId);
+    const variantId1 = variantId[0];
+    const variantId2 = variantId[1];
+
+    console.log("id11" + variantId1);
+    console.log("id12" + variantId2);
+
+
+    const lineItemsToAdd = [
+        {variantId: variantId1, quantity: parseInt(quantity, 10)},
+        {variantId: variantId2, quantity: parseInt(quantity, 10)}
+      ]
     const checkoutId = this.state.checkout.id
 
     return this.props.client.checkout.addLineItems(checkoutId, lineItemsToAdd).then(res => {
@@ -91,7 +104,8 @@ class App extends Component {
             </div>
           }
           <div className="App__title">
-            <h1>{this.state.shop.name}: React Example</h1>
+            <h1>Shop Example</h1>
+
             <h2>{this.state.shop.description}</h2>
           </div>
         </header>
